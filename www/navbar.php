@@ -1,23 +1,26 @@
-<!-- <nav class="navigation-bar">
-    <ul>
-        <li><a href="index.php">Home</a></li></li>
-        <li><a href="artworks.php">Artworks</a></li>
-        <li><a href="about.php">About</a></li>
-        <li><a href="contact.php">Contact</a></li>
-    </ul>
-</nav>
- -->
+<?php
+
+// Ternary zodat ik verschillende pagina's kan markeren als actief in de navbar
+// Checkt via de URL of het word bevat dat overeenkomt met de pagina
+
+$about = (str_contains($_SERVER['REQUEST_URI'], 'about')) ? 'active' : '';
+$contact = (str_contains($_SERVER['REQUEST_URI'], 'contact')) ? 'active' : '';
+$gallery = (str_contains($_SERVER['REQUEST_URI'], 'gallery')) ? 'active' : '';
+
+if($about != 'active' && $contact != 'active' && $gallery != 'active') {
+    $index = 'active';
+}
 
 
+?>
 <header class="navbar">
     <div class="navbar-brand">ARTSPACE</div>
 
     <nav class="navbar-links" id="navLinks">
-        <a href="#" class="active">Home</a>
-        <a href="#">Gallery</a>
-        <a href="#">Artists</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="index.php"  class="<?php echo $index; ?>">Home</a>
+        <a href="gallery.php" class="<?php echo $gallery; ?>">Gallery</a>
+        <a href="about.php" class="<?php echo $about; ?>">About</a>
+        <a href="contact.php" class="<?php echo $contact; ?>">Contact</a>
     </nav>
 
     <button class="hamburger" id="hamburger" aria-label="Menu">
