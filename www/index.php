@@ -12,17 +12,15 @@
         <?php include 'navbar.php'; ?>
     </header>
     <main>
-        <h1>Welcome to ArtSpace</h1>
-        <p>Your gateway to the world of art.</p>
+        <div class="index-main">
+            <h1>Welcome to ArtSpace</h1>
+            <p>Your gateway to the world of art.</p>
+        </div>
     </main>
     <main>
         <?php include 'artworks.php'; ?>
     </main>
-    <footer>
         <?php include 'footer.php'; ?>
-    </footer>
-
-
 </body>
 
 </html>

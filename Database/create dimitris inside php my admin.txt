@@ -1,0 +1,8 @@
+-- Allow Dimitris to connect from anywhere
+CREATE USER IF NOT EXISTS 'Dimitris'@'%' IDENTIFIED BY 'password'; 
+
+ALTER USER 'Dimitris'@'%' IDENTIFIED BY 'password'; 
+
+GRANT ALL PRIVILEGES ON *.* TO 'Dimitris'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;

@@ -23,25 +23,18 @@ $artworks = mysqli_fetch_all($result, MYSQLI_ASSOC);
         <main>
             <section class="artworks">
                 <?php
-            foreach ($artworks as $artwork) {
-                $img = $artwork['image'];
-                echo "<div>";
-                echo "<h2>" . $artwork['title']. "</h2>";
-                echo "<p>Artist: " . $artwork['artist'] . "</p>";
-                echo "<p>Year: " . $artwork['year_created'] . "</p>";
-
-                echo "<img src='" . substr($img, 0, -4) . "_small.jpg" . "' alt='" . $artwork['title'] . "' />";
-                
-                echo "</div>";
-            }
-            ?>
+            foreach ($artworks as $artwork): ?>
+                <?php $img = $artwork['image']; ?>
+                <div>
+                <h2><?php echo $artwork['title']; ?></h2>
+                <p><?php echo "Artist: " . $artwork['artist']; ?></p>
+                <p><?php echo "Year: " . $artwork['year_created']; ?></p>
+                <?php // Substr 0 dus begint vanaf het begin en -4 om de laatste 4 karakters (.jpg) te verwijderen ?>
+                <img src="<?php echo substr($img, 0, -4) . "_small.jpg"; ?>" alt="<?php echo $artwork['title']; ?>" />
+                </div>
+            <?php endforeach; ?>
         </section>
     </main>
-
-    <footer>
-        <?php include 'footer.php'; ?>
-    </footer>
-
 </body>
 
 </html>
