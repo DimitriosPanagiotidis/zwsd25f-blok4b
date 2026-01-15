@@ -162,6 +162,13 @@ main{
     color: #333;
 }
 
+.about-main img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 8px;
+}
 
 
 
@@ -234,7 +241,7 @@ main{
     font-weight: 700;
     margin-bottom: 20px;
 }
-.login-form input[type="text"],
+.login-form input[type="email"],
 .login-form input[type="password"]{
     width: 100%;
     padding: 10px;

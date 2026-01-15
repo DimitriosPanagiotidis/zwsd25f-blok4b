@@ -19,12 +19,20 @@ if($about != 'active' && $contact != 'active' && $gallery != 'active' && $regist
     <div class="navbar-brand"><a href="index.php" class="logo_link">ARTSPACE</a></div>
 
     <nav class="navbar-links" id="navLinks">
+        <?php if (isset($_SESSION['user_id'])): ?>
         <a href="index.php"  class="<?php echo $index; ?>">Home</a>
         <a href="gallery.php" class="<?php echo $gallery; ?>">Gallery</a>
+        <?php endif; ?>
         <a href="about.php" class="<?php echo $about; ?>">About</a>
         <a href="contact.php" class="<?php echo $contact; ?>">Contact</a>
+        <?php if (!isset($_SESSION['user_id'])): ?>
         <a href="register.php" class="<?php echo $register ?>">Register</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['user_id'])): ?>
+        <a href="logout.php">Logout</a>
+        <?php else: ?>
         <a href="login.php" class="<?php echo $login ?>">Login</a>
+        <?php endif; ?>
     </nav>
 
 

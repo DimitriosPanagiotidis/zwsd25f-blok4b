@@ -149,8 +149,7 @@ if ($_POST['employee_member'] === 'yes') {
         exit;
     }
     $employee_id = mysqli_insert_id($conn);
-}
-else {
+} else {
     $employee_id = "NULL";
 }
 
@@ -162,10 +161,8 @@ $username = $_POST['username'];
 $password = ($_POST['password']);
 
 $sql = "INSERT INTO user (firstname, lastname, email, username, password, address_id, member_id, employee_id) "
-     . "VALUES ('$firstname', '$lastname', '$email', '$username', '$password', $address_id, $member_id, $employee_id)";
+    . "VALUES ('$firstname', '$lastname', '$email', '$username', '$password', $address_id, $member_id, $employee_id)";
 
-    //  var_dump($sql);
-    //  die;
 
 
 $result = mysqli_query($conn, $sql);
