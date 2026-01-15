@@ -16,7 +16,7 @@ if($about != 'active' && $contact != 'active' && $gallery != 'active' && $regist
 
 ?>
 <header class="navbar">
-    <div class="navbar-brand">ARTSPACE</div>
+    <div class="navbar-brand"><a href="index.php" class="logo_link">ARTSPACE</a></div>
 
     <nav class="navbar-links" id="navLinks">
         <a href="index.php"  class="<?php echo $index; ?>">Home</a>

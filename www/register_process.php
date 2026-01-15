@@ -129,14 +129,15 @@ if ($_POST['employee_member'] === 'no') {
         echo "<a href='register.php'> Go back to registration</a>";
         exit;
     }
+    $member_id = mysqli_insert_id($conn);
+} else {
+    $member_id = "NULL";
 }
 // Foreign key member_id
-$member_id = mysqli_insert_id($conn);
 // Employee inputs
 $start_date = $_POST['start_date'];
 $job_title = $_POST['job_title'];
 
-$employee_id = mysqli_insert_id($conn);
 
 if ($_POST['employee_member'] === 'yes') {
     $sql = "INSERT INTO employee (start_date, job_title) "
@@ -147,6 +148,10 @@ if ($_POST['employee_member'] === 'yes') {
         echo "<a href='register.php'> Go back to registration</a>";
         exit;
     }
+    $employee_id = mysqli_insert_id($conn);
+}
+else {
+    $employee_id = "NULL";
 }
 
 // User inputs
@@ -156,11 +161,12 @@ $email = $_POST['email'];
 $username = $_POST['username'];
 $password = ($_POST['password']);
 
-$sql = "INSERT INTO user (firstname, lastname, email, username, password, address_id, member_id,employee_id) "
-    . "VALUES ('$firstname', '$lastname', '$email', '$username', '$password', '$address_id', '$member_id', '$employee_id')";
+$sql = "INSERT INTO user (firstname, lastname, email, username, password, address_id, member_id, employee_id) "
+     . "VALUES ('$firstname', '$lastname', '$email', '$username', '$password', $address_id, $member_id, $employee_id)";
 
-    var_dump($sql);
-    die;
+    //  var_dump($sql);
+    //  die;
+
 
 $result = mysqli_query($conn, $sql);
 if (!$result) {
