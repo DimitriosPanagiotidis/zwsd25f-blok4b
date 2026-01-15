@@ -1,14 +1,23 @@
+<?php
+session_start()
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - ArtSpace</title>
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header>
-        <?php include 'navbar.php'; ?>  
+        <?php include 'navbar.php'; ?>
     </header>
     <main>
         <section class="about-main">
@@ -20,9 +29,11 @@
             <h2>Our Team</h2>
             <p>Our team is composed of passionate individuals who share a love for art and culture. From curators to art historians, each member brings a unique perspective and expertise to our organization.</p>
             <p>We are committed to fostering a welcoming and inclusive environment for all art lovers.</p>
+            <img src="images/our_team.png" alt="Our team working together" class="about-image"/>
         </section>
     </main>
     <?php include 'footer.php'; ?>
-    
+
 </body>
+
 </html>
