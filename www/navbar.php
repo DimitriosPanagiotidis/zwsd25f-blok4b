@@ -1,7 +1,7 @@
 <?php
 
-// Ternary zodat ik verschillende pagina's kan markeren als actief in de navbar
-// Checkt via de URL of het word bevat dat overeenkomt met de pagina
+// Ternary so in that way i can set the active class to the correct page
+// Check which page is currently being viewed VIA THE URL
 
 $about = (str_contains($_SERVER['REQUEST_URI'], 'about')) ? 'active' : '';
 $contact = (str_contains($_SERVER['REQUEST_URI'], 'contact')) ? 'active' : '';

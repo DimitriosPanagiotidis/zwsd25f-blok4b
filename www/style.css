@@ -214,8 +214,60 @@ main{
 }
 
 
+.login-wrapper{
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-header h1{
+    text-align: center;
+    color: #B08D57;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.login-form input[type="text"],
+.login-form input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.login-form button{
+    background-color: #B08D57;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
+.register_button {
+    background-color: #B08D57;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+
 .register-header{
     margin-bottom: 20px;
+}
+.register-header h1{
+    text-align: center;
+    color: #B08D57;
+    font-weight: 700;
 }
 
 .register-header h1, 
@@ -242,6 +294,34 @@ main{
     border-radius: 4px;
     font-size: 14px;
 }
+
+.employee_fields,
+.member_fields{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    background-color: #f9f9f9;
+}
+
+.employee_fields,
+.member_fields{
+    display: none;
+}
+
+/* If the id from employee is on then it displays the employee info  */
+#employee:checked ~ .employee_fields {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 5px;
+}
+/* If the id from member is on then it displays the member info  */
+#member:checked ~ .member_fields {
+  display: flex;
+}
+
+
 
 .terms-conditions{
     max-width: 800px;

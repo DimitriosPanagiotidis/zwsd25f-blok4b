@@ -58,8 +58,38 @@ if (strlen($_POST['phone']) < 10) {
     exit;
 }
 
-if (empty($_POST['member_number']) || !is_numeric($_POST['member_number'])) {
-    echo "Member number is required and must be numeric.";
+if (strlen($_POST['member_number']) < 4 && $_POST['employee_member'] === 'no') {
+    echo "Member number must be at least 4 digits long.";
+    echo "<a href='register.php'> Go back to registration</a>";
+    exit;
+}
+
+if (!isset($_POST['employee_member'])) {
+    echo "Please select if you are an employee or a member.";
+    echo "<a href='register.php'> Go back to registration</a>";
+    exit;
+}
+
+if ($_POST['employee_member'] === 'yes') {
+    if (empty($_POST['start_date']) || empty($_POST['job_title'])) {
+        echo "Employee fields are required.";
+        echo "<a href='register.php'> Go back to registration</a>";
+        exit;
+    }
+} elseif ($_POST['employee_member'] === 'no') {
+    if (empty($_POST['member_number'])) {
+        echo "Member fields are required.";
+        echo "<a href='register.php'> Go back to registration</a>";
+        exit;
+    }
+} else {
+    echo "Invalid selection for employee or member.";
+    echo "<a href='register.php'> Go back to registration</a>";
+    exit;
+}
+
+if (!isset($_POST['terms'])) {
+    echo "You must agree to the Terms and Conditions.";
     echo "<a href='register.php'> Go back to registration</a>";
     exit;
 }
@@ -85,26 +115,53 @@ if (!$result) {
     echo "<a href='register.php'> Go back to registration</a>";
     exit;
 }
-
+// Foreign key address_id
 $address_id = mysqli_insert_id($conn);
 
-// Sanitize and assign user inputs
+// Member inputs
+$member_number = $_POST['member_number'];
+if ($_POST['employee_member'] === 'no') {
+    $sql = "INSERT INTO member (member_number,last_login_date)"
+        . "VALUES ('$member_number', NULL)";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        echo "Error inserting member: " . mysqli_error($conn);
+        echo "<a href='register.php'> Go back to registration</a>";
+        exit;
+    }
+}
+// Foreign key member_id
+$member_id = mysqli_insert_id($conn);
+// Employee inputs
+$start_date = $_POST['start_date'];
+$job_title = $_POST['job_title'];
+
+$employee_id = mysqli_insert_id($conn);
+
+if ($_POST['employee_member'] === 'yes') {
+    $sql = "INSERT INTO employee (start_date, job_title) "
+        . "VALUES ('$start_date', '$job_title')";
+    $result = mysqli_query($conn, $sql);
+    if (!$result) {
+        echo "Error inserting employee: " . mysqli_error($conn);
+        echo "<a href='register.php'> Go back to registration</a>";
+        exit;
+    }
+}
+
+// User inputs
 $firstname = $_POST['firstname'];
 $lastname = $_POST['lastname'];
 $email = $_POST['email'];
 $username = $_POST['username'];
 $password = ($_POST['password']);
 
-// Check if username or email already exists
+$sql = "INSERT INTO user (firstname, lastname, email, username, password, address_id, member_id,employee_id) "
+    . "VALUES ('$firstname', '$lastname', '$email', '$username', '$password', '$address_id', '$member_id', '$employee_id')";
 
-$member_number = $_POST['member_number'];
-$Null = NULL;
-$sql = "INSERT INTO member (member_number,last_login_date)"
-    . "VALUES ('$member_number',$Null)";
-$member_id = mysqli_insert_id($conn);
+    var_dump($sql);
+    die;
 
-$sql = "INSERT INTO user (firstname, lastname, email, username, password, address_id) "
-    . "VALUES ('$firstname', '$lastname', '$email', '$username', '$password', '$address_id')";
 $result = mysqli_query($conn, $sql);
 if (!$result) {
     echo "Error inserting user: " . mysqli_error($conn);
