@@ -11,13 +11,22 @@ main{
   flex: 1;
 }
 
+/* 
+  NAVBAR STYLES 
+*/ 
 .logo_link{
-  text-decoration: none;
-  color: #1C1C1C;
+    text-decoration: none;
+    color: #1C1C1C;
 }
 
-/* Base navbar */
+.navbar > * {
+  flex-shrink: 0;
+}
+
+
 .navbar {
+    width: 100%;
+    height: auto;
   background-color: #FFFFFF;
   border-bottom: 1px solid #E5E5E5;
   padding: 16px 24px;
@@ -36,23 +45,72 @@ main{
 
 /* Links */
 .navbar-links {
-  display: flex;
-  gap: 24px;
+    display: flex;
+    gap: 24px;
+    position: relative;
+    top: 100%;
 }
 
 .navbar-links a {
-  text-decoration: none;
-  color: #1C1C1C;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+    text-decoration: none;
+    color: #1C1C1C;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .navbar-links a:hover,
 .navbar-links a.active {
-  color: #B08D57;
+    color: #B08D57;
 }
 
+
+
+.search_bar {
+  margin-left: auto;
+  display: flex;
+  margin-right: 5px;
+  gap: 8px;
+}
+
+.search_bar input[type="text"] {
+  padding: 6px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.search_bar button {
+  padding: 6px 12px;
+  background-color: #B08D57;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.search_bar button:hover {
+  background-color: #9C7650;
+}
+
+.searchprocess_results h1{
+    padding: 20px;
+    text-align: center;
+}
+
+
+.welcome_message {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.welcome_message h2 {
+  margin: 0;
+  font-size: 25px;
+}
+.welcome_message span {
+  color: #B08D57;
+  font-weight: 700;
+}
 /* Hamburger button */
 .hamburger {
   display: none;
@@ -72,29 +130,47 @@ main{
   border-radius: 2px;
 }
 
-/* MOBILE  NAVIGATION*/
-@media (max-width: 768px) {
-  .navbar-links {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: #e6dcdc;
-    flex-direction: column;
-    width: 100%;
-    display: none;
-    border-bottom: 1px solid #E5E5E5;
-  }
-  .navbar-links a {
-    padding: 16px 24px;
-    border-top: 1px solid #F0F0F0;
-  }
-  .hamburger {
-    display: flex;
-  }
-}
+
 /* Active mobile menu */
 .navbar-links.open {
   display: flex;
+}
+
+/* 
+  INDEX PAGE 
+*/
+
+.filters{
+    margin: 20px;
+    text-align: center;
+}
+.filters ul{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+.filters ul li a{
+    text-decoration: none;
+    color: #1C1C1C;
+    font-weight: 700;
+}
+.filters ul li a{
+  padding: 8px 12px;
+  border: 1px solid #1C1C1C;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.filters ul li a:hover{
+    color: #B08D57;
+}
+
+.index_header h2{
+    color: #1C1C1C;
+    font-weight: 700;
+    text-align: center;
 }
 
 .index-main{
@@ -112,6 +188,63 @@ main{
     margin: 0 auto;
 }
 
+/* 
+DETAIL PAGE 
+*/
+
+.detail_number_artwork{
+    text-align: center;
+    margin-top: 20px;
+    color: #1C1C1C;
+    font-weight: 700;
+}
+
+.detailpage_one_by_one {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.detailpage_one_by_one h1{
+    text-align: center;
+    color: #B08D57;
+    font-weight: 900;
+}
+.detailpage_one_by_one img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 8px;
+}
+.detailpage_one_by_one h2{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+
+.detailpage_one_by_one p{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 10px;
+}
+.detailpage_one_by_one a{
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #B08D57;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    justify-content: right;
+}
+
+/* 
+ ARTWORKS 
+*/
 .artworks{
     display: flex;
     flex-wrap: wrap;
@@ -128,13 +261,104 @@ main{
     border-radius: 10px;
 }
 
-.gallery-header{
-  text-align: center;
-  padding: 20px;
-  color: #1C1C1C;
+/*
+  MEMBERS OVERVIEW PAGE
+ */
+
+.members_section{
+    text-align: center;
+    margin-top: 40px;
+    color: #1C1C1C;
+    font-weight: 700;
+    justify-content: center;
+    display: flex;
+    margin: 100px auto 20px auto;
+}
+
+.members_overview{
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.members_container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 200px;
+    background-color: #f9f9f9;
+}
+
+/* 
+  CREATE ARTWORK PAGE
+*/
+.artworkform_wrapper{
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.artworkform_wrapper h1{
+    text-align: center;
+    color: #B08D57;
+    font-weight: 900;
+    margin-bottom: 20px;
+}
+
+.artworkform_wrapper form input[type="text"],
+.artworkform_wrapper form input[type="number"],
+.artworkform_wrapper form input[type="date"]
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.artworkform_wrapper form button{
+    background-color: #B08D57;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+}
+.artworkform_wrapper form button:hover{
+    background-color: #9C7650;
 }
 
 
+
+
+
+/* 
+  MEMBERS PROFILE PAGE 
+*/
+.profile_container{
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 
+  ABOUT PAGE
+*/
 
 .about-main{
     max-width: 800px;
@@ -169,16 +393,9 @@ main{
     margin: 20px auto;
     border-radius: 8px;
 }
-
-
-
-
-
-@media (max-width: 600px){
-    .contact-form{
-        padding: 10px;
-    }
-}
+/* 
+  CONTACT PAGE
+*/
 .contact-header{
     text-align: center;
     margin-top: 20px;
@@ -226,6 +443,15 @@ main{
 }
 
 
+
+
+
+
+
+
+/* 
+LOGIN PAGE
+*/
 .login-wrapper{
     max-width: 400px;
     margin: 50px auto;
@@ -261,6 +487,11 @@ main{
     font-size: 16px;
     width: 100%;
 }
+
+
+/*
+  REGISTER PAGE 
+ */
 
 .register_button {
     background-color: #B08D57;
@@ -334,6 +565,9 @@ main{
 }
 
 
+/* 
+  TERMS AND CONDITIONS PAGE
+ */
 
 .terms-conditions{
     max-width: 800px;
@@ -375,4 +609,107 @@ main{
 .footer p{
     margin: 0;
     font-size: 14px;
+}
+
+
+/* MEDIA QUERIES */
+
+
+@media (max-width: 900px) {
+
+  .welcome_message {
+    position: static;
+    transform: none;
+    text-align: center;
+  }
+
+  .search_bar {
+    width: 100%;
+    margin-left: 0;
+    justify-content: center;
+  }
+  .filters ul{
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+
+
+
+@media (max-width: 768px) {
+
+  /* NAVBAR LAYOUT */
+  .navbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .navbar > * {
+    flex-shrink: 0;
+  }
+
+  .navbar-brand {
+    order: 1;
+  }
+
+  .hamburger {
+    display: flex;
+    order: 2;
+  }
+
+  .search_bar {
+    order: 3;
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .welcome_message {
+    order: 4;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* MOBILE DROPDOWN MENU */
+  .navbar-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 100%;
+    background: #e6dcdc;
+    flex-direction: column;
+    display: none;
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  .navbar-links a {
+    padding: 16px 24px;
+    border-top: 1px solid #F0F0F0;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  /* TEXT SCALING */
+  .welcome_message h2 {
+    font-size: 20px;
+  }
+
+  .index-main h1 {
+    margin-top: 40px;
+  }
+
+  .contact-form {
+    padding: 10px;
+  }
+  .contact-form button{
+    width: 100%;
+  }
+  .artworkform_wrapper{
+    padding: 10px;
+    max-width: 100%;
+    width: 100%;
+  }
 }
