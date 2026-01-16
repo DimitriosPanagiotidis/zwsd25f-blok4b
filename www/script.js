@@ -10,16 +10,18 @@
 
 // Session timer
 const timer = document.getElementById('session-timer');
+const startTime = Math.floor(Date.now() / 1000); 
 
-if (timer && typeof loginTime !== 'undefined') {
-  setInterval(() => {
+if (timer) {
+  function runTimer() {
     const now = Math.floor(Date.now() / 1000);
-    const elapsed = now - loginTime;
-
+    const elapsed = now - startTime;
     const minutes = Math.floor(elapsed / 60);
     const seconds = elapsed % 60;
 
     timer.textContent =
       `${minutes}:${seconds.toString().padStart(2, '0')}`;
-  }, 1000);
+  }
+
+  setInterval(runTimer, 1000);
 }
