@@ -5,11 +5,16 @@
 
 $about = (str_contains($_SERVER['REQUEST_URI'], 'about')) ? 'active' : '';
 $contact = (str_contains($_SERVER['REQUEST_URI'], 'contact')) ? 'active' : '';
-$gallery = (str_contains($_SERVER['REQUEST_URI'], 'gallery')) ? 'active' : '';
 $register = (str_contains($_SERVER['REQUEST_URI'], 'register')) ? 'active' : '';
 $login = (str_contains($_SERVER['REQUEST_URI'], 'login')) ? 'active' : '';
+$member = (str_contains($_SERVER['REQUEST_URI'], 'members')) ? 'active' : '';
+$member_profile = (str_contains($_SERVER['REQUEST_URI'], 'profile_member')) ? 'active' : '';
+$create_artwork = (str_contains($_SERVER['REQUEST_URI'], 'create_artwork')) ? 'active' : '';
 
-if($about != 'active' && $contact != 'active' && $gallery != 'active' && $register != 'active' && $login != 'active') {
+if (
+    $about != 'active' && $contact != 'active' && $register != 'active' &&
+    $login != 'active' && $member != 'active' && $member_profile != 'active' && $create_artwork != 'active'
+) {
     $index = 'active';
 }
 
@@ -17,21 +22,40 @@ if($about != 'active' && $contact != 'active' && $gallery != 'active' && $regist
 ?>
 <header class="navbar">
     <div class="navbar-brand"><a href="index.php" class="logo_link">ARTSPACE</a></div>
+    <?php if (isset($_SESSION['member_id'])): ?>
+        <!-- Timer via JS -->
+        <div class="timer" id="session-timer"></div>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['member_id']) || isset($_SESSION['employee_id'])): ?>
+        <form class="search_bar" method="get" action="search_process.php">
+            <input type="search" id="search_input" name="search_input" placeholder="Search artworks...">
+            <button type="submit" id="search-button">Search</button>
+        </form>
+    <?php endif; ?>
 
     <nav class="navbar-links" id="navLinks">
         <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="index.php"  class="<?php echo $index; ?>">Home</a>
-        <a href="gallery.php" class="<?php echo $gallery; ?>">Gallery</a>
+            <a href="index.php" class="<?php echo $index; ?>">Home</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['employee_id'])): ?>
+            <a href="members_overview.php" class="<?php echo $member; ?>">Members</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['employee_id'])): ?>
+            <a href="create_artwork.php" class="<?php echo $create_artwork; ?>">Create Artwork</a>
         <?php endif; ?>
         <a href="about.php" class="<?php echo $about; ?>">About</a>
         <a href="contact.php" class="<?php echo $contact; ?>">Contact</a>
         <?php if (!isset($_SESSION['user_id'])): ?>
-        <a href="register.php" class="<?php echo $register ?>">Register</a>
+            <a href="register.php" class="<?php echo $register ?>">Register</a>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['member_id'])): ?>
+            <a href="profile_member.php" class="<?php echo $member_profile; ?>">Profile</a>
         <?php endif; ?>
         <?php if (isset($_SESSION['user_id'])): ?>
-        <a href="logout.php">Logout</a>
+            <a href="logout.php">Logout</a>
         <?php else: ?>
-        <a href="login.php" class="<?php echo $login ?>">Login</a>
+            <a href="login.php" class="<?php echo $login ?>">Login</a>
         <?php endif; ?>
     </nav>
 
