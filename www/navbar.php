@@ -8,13 +8,10 @@ $contact = (str_contains($_SERVER['REQUEST_URI'], 'contact')) ? 'active' : '';
 $register = (str_contains($_SERVER['REQUEST_URI'], 'register')) ? 'active' : '';
 $login = (str_contains($_SERVER['REQUEST_URI'], 'login')) ? 'active' : '';
 $member = (str_contains($_SERVER['REQUEST_URI'], 'members')) ? 'active' : '';
-$member_profile = (str_contains($_SERVER['REQUEST_URI'], 'profile_member')) ? 'active' : '';
-$create_artwork = (str_contains($_SERVER['REQUEST_URI'], 'create_artwork')) ? 'active' : '';
-$employee_artworks = (str_contains($_SERVER['REQUEST_URI'], 'employee_artworks')) ? 'active' : '';
+$employee_dashboard = (str_contains($_SERVER['REQUEST_URI'], 'employee_dashboard')) ? 'active' : '';
 if (
     $about != 'active' && $contact != 'active' && $register != 'active' &&
-    $login != 'active' && $member != 'active' && $member_profile != 'active' &&
-    $create_artwork != 'active' && $employee_artworks != 'active'
+    $login != 'active' && $member != 'active' && $employee_dashboard != 'active'
 ) {
     $index = 'active';
 }
@@ -39,14 +36,8 @@ if (
         <?php if (isset($_SESSION['user_id'])): ?>
             <a href="index.php" class="<?php echo $index; ?>">Home</a>
         <?php endif; ?>
-        <?php if (isset($_SESSION['employee_id'])): ?>
-            <a href="members_overview.php" class="<?php echo $member; ?>">Members</a>
-        <?php endif; ?>
-        <?php if (isset($_SESSION['employee_id'])): ?>
-            <a href="create_artwork.php" class="<?php echo $create_artwork; ?>">Create Artwork</a>
-        <?php endif; ?>
-        <?php if (isset($_SESSION['employee_id'])): ?>
-            <a href="employee_artworks.php" class="<?php echo $employee_artworks; ?>">Edit Artworks</a>
+        <?php if(isset($_SESSION['employee_id'])): ?>
+            <a href="employee_dashboard.php" class="<?php echo $employee_dashboard; ?>">Dashboard</a>
         <?php endif; ?>
         <a href="about.php" class="<?php echo $about; ?>">About</a>
         <a href="contact.php" class="<?php echo $contact; ?>">Contact</a>

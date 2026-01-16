@@ -312,20 +312,152 @@ DETAIL PAGE
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.members_overview th,
+.members_overview td{
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
 
+.members_overview a{
+    padding: 6px 12px;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background-color: #B08D57;
+}
+.members_overview a:hover{
+    background-color: #9C7650;
+}
+
+.header_members_overview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .members_container{
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
     text-align: center;
-    padding: 10px;
+    padding: 20px 40px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    width: 200px;
+    width: fit-content;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    margin-top: 10px;
+}
+
+.search_user_member_overview{
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+.search_user_member_overview input[type="text"] {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.search_user_member_overview button {
+    padding: 6px 12px;
+    background-color: #B08D57;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* 
+  EMPLOYEE DASHBOARD STYLES
+*/
+.employee_dashboard_header {
+    background-color: #FFFFFF;
+    padding-bottom: 20px;
+}
+
+.employee_welcome_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 30px 40px;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: fit-content;
     background-color: #f9f9f9;
 }
+
+.employee_welcome_container h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1C1C1C;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.employee_welcome_container p {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.navbar_dashboard_employee {
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+    background-color: #f4f4f4;
+}
+
+.navbar_dashboard_employee ul {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.navbar_dashboard_employee ul li a {
+    text-decoration: none;
+    color: #1C1C1C;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    border: 1px solid #1C1C1C;
+    border-radius: 4px;
+    background-color: #fff;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.navbar_dashboard_employee ul li a:hover{
+    background-color: #B08D57;
+    color: white;
+    border-color: #B08D57;
+}
+
+.navbar_dashboard_employee ul li a.active{
+    background-color: #B08D57;
+    color: white;
+    border-color: #B08D57;
+}
+
+
+
 
 /* 
   CREATE ARTWORK PAGE
@@ -819,5 +951,12 @@ LOGIN PAGE
     padding: 10px;
     max-width: 100%;
     width: 100%;
+  }
+  .members_overview a{
+    padding: 20px;
+    width: 100%;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
   }
 }
