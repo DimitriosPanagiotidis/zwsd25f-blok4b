@@ -6,7 +6,7 @@
   hamburger.addEventListener('click', () => {
     navLinks.classList.toggle('open');
   });
-
+2
 
 // Session timer
 const timer = document.getElementById('session-timer');
